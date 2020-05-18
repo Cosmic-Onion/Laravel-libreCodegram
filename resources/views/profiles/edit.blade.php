@@ -2,26 +2,75 @@
 
 @section('content')
 <div class="container">
-<form action="/p" enctype="multipart/form-data" method="post">
+<form action="/profile/{{ $user->id }}" enctype="multipart/form-data" method="post">
         @csrf
+        @method('PATCH')
+
         <div class="row">
-            <h1>Add new post!</h1>
+            <h1>Edit Profile!</h1>
         </div>
 
         <div class="row">
             <div class="col-8 offset-2">
                 <div class="form-group row">
-                    <label for="image" class="col-md-4 col-form-label">Post Caption</label>
+                    <label for="title" class="col-md-4 col-form-label">Title</label>
 
-                    <input  id="caption"
+                    <input  id="title"
                             type="text"
-                            class="form-control @error('caption') is-invalid @enderror" 
-                            value="{{ old('caption') }}" 
-                            required autocomplete="caption" 
-                            name="caption"
+                            class="form-control @error('title') is-invalid @enderror" 
+                            value="{{ old('title') ?? $user->profile->title }}" 
+                            required autocomplete="title" 
+                            name="title"
                             autofocus>
 
-                    @error('caption')
+                    @error('title')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+            </div>
+
+           
+        </div>
+        <div class="row">
+            <div class="col-8 offset-2">
+                <div class="form-group row">
+                    <label for="description" class="col-md-4 col-form-label">Description</label>
+
+                    <input  iD="description"
+                            type="text"
+                            class="form-control @error('description') is-invalid @enderror" 
+                            value="{{ old('description') ?? $user->profile->description }}" 
+                            required autocomplete="description" 
+                            name="description"
+                            autofocus>
+
+                    @error('description')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-8 offset-2">
+                <div class="form-group row">
+                    <label for="url" class="col-md-4 col-form-label">URL</label>
+
+                    <input  id="url"
+                            type="text"
+                            class="form-control @error('url') is-invalid @enderror" 
+                            value="{{ old('url') ?? $user->profile->url }}" 
+                            required autocomplete="url" 
+                            name="url"
+                            autofocus>
+
+                    @error('url')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -34,10 +83,10 @@
         </div>
 
         <div class="row">
-            <label for="image" class="col-md-4 col-form-label">Post Image</label>
-            <input type="file" class="form-control-file" id="image" name="image">
+            <label for="title" class="col-md-4 col-form-label">New Profile Image</label>
+            <input type="file" class="form-control-file" id="title" name="title">
 
-            @error('image')
+            @error('title')
                 
                     <strong>{{ $message }}</strong>
                  
@@ -46,7 +95,7 @@
         </div>
 
         <div class="row pt-4">
-            <button class="btn btn-primary">Add New Post</button>
+            <button class="btn btn-primary">Update Profile</button>
         </div>
     </form>
 </div>
