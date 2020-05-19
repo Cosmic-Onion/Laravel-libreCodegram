@@ -83,10 +83,10 @@
         </div>
 
         <div class="row">
-            <label for="title" class="col-md-4 col-form-label">New Profile Image</label>
-            <input type="file" class="form-control-file" id="title" name="title">
+            <label for="image" class="col-md-4 col-form-label">New Profile Image</label>
+            <input type="file" class="form-control-file" id="image" name="image">
 
-            @error('title')
+            @error('image')
                 
                     <strong>{{ $message }}</strong>
                  

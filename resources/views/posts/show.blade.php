@@ -8,12 +8,27 @@
         </div>
         <div class="col-4">
             <div>
-                <h3> {{$post->user->username}}</h3>
+                <div class="d-flex align-items-center">
+                    <div class="pr-3">
+                        <img src="/storage/{{$post->user->profile->image}}" class="w-100 rounded-circle" style="max-width:50px;">
+                    </div>
+
+                    <div>
+                        <a href="/profile/{{$post->user->id}}">
+                            <span class="text-dark">
+                                {{$post->user->username}}
+                            </span>
+                        </a>
+                        <a href="#" class="pr-3">Follow</a>
+                    </div>
+                </div>
+
+                <hr>
                 <p> {{$post->caption}}</p>
             </div>
         </div>
     </div>
-   
+
 
 </div>
 @endsection
